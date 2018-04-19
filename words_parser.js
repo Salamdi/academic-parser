@@ -4,7 +4,7 @@ const fs = require('fs');
 
 console.log(`PID: ${process.pid}`)
 
-const links = fs.readFileSync('./links.txt', 'utf8').toString().split('\n').slice(0, 30)
+const links = fs.readFileSync('./links.txt', 'utf8').toString().split('\n')
 
 fs.writeFileSync('./words.json', '[')
 
