@@ -1,0 +1,16 @@
+{
+  "name": "academic-parser",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "description": "puppeteer test",
+  "author": "Dinislam",
+  "private": true,
+  "scripts": {
+    "start": "node index"
+  },
+  "dependencies": {
+    "express": "^4.16.3",
+    "puppeteer": "^1.2.0"
+  }
+}
