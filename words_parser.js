@@ -37,7 +37,7 @@ async function iterate(page, links, parsedWords = []) {
 }
 
 (async() => {
-    const browser = await puppeteer.launch()
+    const browser = await puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox']})
     const page = await browser.newPage()
     const words = await iterate(page, links)
     return words
