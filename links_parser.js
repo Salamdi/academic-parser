@@ -28,6 +28,7 @@ async function isNextPage(page) {
 async function getAllWordLinks(page, link) {
     await page.goto(link)
     let wordLinks = await getWordLinks(page)
+    console.log(link)
     const nextPageLink = await(isNextPage(page))
     if (nextPageLink) {
         const nextLinks = await getAllWordLinks(page, nextPageLink, wordLinks)
@@ -48,7 +49,7 @@ async function iterate(page ,links, i = 0) {
 }
 
 (async() => {
-    const browser = await puppeteer.launch()
+    const browser = await puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox']})
     let page = await browser.newPage()
 
     await page.goto('https://nog_rus_new.academic.ru/')
@@ -61,7 +62,7 @@ async function iterate(page ,links, i = 0) {
 
     const wordLinks = await iterate(page, links)
 
-    return await new Promise((resolve ,reject) => {
+    /* return await new Promise((resolve ,reject) => {
         fs.writeFile('./links.txt', wordLinks.join('\n'), err => {
             if (err) {
                 reject(err)
@@ -69,7 +70,8 @@ async function iterate(page ,links, i = 0) {
                 resolve('done!')
             }
         })
-    })
+    }) */
+    return wordLinks
 
 })().then(result => {
     console.log(result)
