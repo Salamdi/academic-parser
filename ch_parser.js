@@ -3,7 +3,7 @@ const fetch = require('isomorphic-fetch')
 const fs = require('fs')
 const process = require('process')
 
-const links = JSON.parse(fs.readFileSync('./filtered_links.json', 'utf8')).slice(0, 20)
+const links = JSON.parse(fs.readFileSync('./filtered_links.json', 'utf8'))
 
 async function parseLink(link) {
     return await fetch(link)
